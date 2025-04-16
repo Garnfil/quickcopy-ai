@@ -10,8 +10,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { createUser } from "@/lib/actions/user";
 
 export default function SignUpForm() {
+    // const handleSubmit = async () => {
+    //     const user = await createUser(formData);
+    //     console.log(user);
+    // };
+
     return (
         <Card
             className="w-[450px] px-10 py-12"
@@ -22,24 +28,32 @@ export default function SignUpForm() {
                 <CardDescription>It only takes a minute to begin</CardDescription>
             </CardHeader>
             <CardContent>
-                <form>
+                <form action={createUser}>
                     <div className="grid w-full items-center gap-6">
                         <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="name">Email</Label>
-                            <Input id="name" placeholder="Your Email Address" />
+                            <Label htmlFor="email">Email</Label>
+                            <Input id="email" name="email" type="email" required />
                         </div>
-                        <div className="text-end">
-                            <div className="flex flex-col space-y-1.5 mb-1">
-                                <Label htmlFor="name">Password</Label>
-                                <Input id="name" placeholder="Your Password" />
-                            </div>
+                        <div className="flex flex-col space-y-1.5">
+                            <Label htmlFor="password">Password</Label>
+                            <Input
+                                id="password"
+                                name="password"
+                                type="password"
+                                required
+                            />
                         </div>
                     </div>
+                    <CardFooter className="flex justify-between mt-6">
+                        <Button
+                            type="submit"
+                            className="w-full py-7 text-lg font-semibold"
+                        >
+                            Register
+                        </Button>
+                    </CardFooter>
                 </form>
             </CardContent>
-            <CardFooter className="flex justify-between">
-                <Button className="w-full py-7 text-lg font-semibold">Register</Button>
-            </CardFooter>
         </Card>
     );
 }

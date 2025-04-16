@@ -18,10 +18,10 @@ const auth = {
         return auth.user;
     },
 
-    createUser: async (user) => {
+    createUser: async (payload) => {
         try {
-            const { account } = await createSessionClient();
-            const user = account.create(ID.unique(), user.email, user.password);
+            const { account } = await createAdminClient();
+            const user = account.create(ID.unique(), payload.email, payload.password);
 
             auth.user = user;
         } catch (error) {
