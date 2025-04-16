@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createAdminClient, createSessionClient } from "./appwrite/config";
+import { ID } from "appwrite";
 
 const auth = {
     user: null,
@@ -14,6 +15,19 @@ const auth = {
             auth.user = null;
             auth.sessionCookie = null;
         }
+        return auth.user;
+    },
+
+    createUser: async (user) => {
+        try {
+            const { account } = await createSessionClient();
+            const user = account.create(ID.unique(), user.email, user.password);
+
+            auth.user = user;
+        } catch (error) {
+            auth.user = null;
+        }
+
         return auth.user;
     },
 
