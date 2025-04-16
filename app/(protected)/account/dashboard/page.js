@@ -27,9 +27,12 @@ export default function Dashboard() {
                 <div className="w-2/4">
                     <Card className="bg-dashboard-card rounded-xl border-none">
                         <CardHeader>
-                            <CardTitle className="text-xl">Generate Microcopy 🔥</CardTitle>
+                            <CardTitle className="text-xl">
+                                Generate Microcopy 🔥
+                            </CardTitle>
                             <h6 className="text-primary-200 text-sm">
-                                Develop precise, helpful text snippets that enhance usability.
+                                Develop precise, helpful text snippets that enhance
+                                usability.
                             </h6>
                         </CardHeader>
                         <CardContent>
@@ -46,8 +49,12 @@ export default function Dashboard() {
                                             <SelectItem value="error message">
                                                 Error Message
                                             </SelectItem>
-                                            <SelectItem value="tooltip">Tooltip</SelectItem>
-                                            <SelectItem value="form label">Form Label</SelectItem>
+                                            <SelectItem value="tooltip">
+                                                Tooltip
+                                            </SelectItem>
+                                            <SelectItem value="form label">
+                                                Form Label
+                                            </SelectItem>
                                             <SelectItem value="modal/dialog">
                                                 Modal/Dialog
                                             </SelectItem>
@@ -73,13 +80,23 @@ export default function Dashboard() {
                                     <SelectContent className="bg-[#221d45] mt-2 border border-primary text-white">
                                         <SelectGroup>
                                             <SelectLabel>Tones</SelectLabel>
-                                            <SelectItem value="apple">Professional</SelectItem>
-                                            <SelectItem value="banana">Friendly</SelectItem>
-                                            <SelectItem value="blueberry">Technical</SelectItem>
-                                            <SelectItem value="grapes">Casual</SelectItem>
-                                            <SelectItem value="pineapple">Formal</SelectItem>
-                                            <SelectItem value="pineapple">Playful</SelectItem>
-                                            <SelectItem value="pineapple">Empathic</SelectItem>
+                                            <SelectItem value="professional">
+                                                Professional
+                                            </SelectItem>
+                                            <SelectItem value="friendly">
+                                                Friendly
+                                            </SelectItem>
+                                            <SelectItem value="technical">
+                                                Technical
+                                            </SelectItem>
+                                            <SelectItem value="casual">Casual</SelectItem>
+                                            <SelectItem value="formal">Formal</SelectItem>
+                                            <SelectItem value="playful">
+                                                Playful
+                                            </SelectItem>
+                                            <SelectItem value="empathic">
+                                                Empathic
+                                            </SelectItem>
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -103,7 +120,9 @@ export default function Dashboard() {
                     <Card className="bg-dashboard-card rounded-xl border-none text-white">
                         <CardHeader>
                             <CardTitle className="text-xl">Result ⚡</CardTitle>
-                            <h6 className="text-primary-200 text-sm">Your Generated Microcopy</h6>
+                            <h6 className="text-primary-200 text-sm">
+                                Your Generated Microcopy
+                            </h6>
                         </CardHeader>
                         <CardContent className="text-white">
                             <CardDescription className="text-white">

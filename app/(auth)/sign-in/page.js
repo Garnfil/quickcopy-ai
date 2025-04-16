@@ -47,7 +47,9 @@ export default function SignIn() {
                         </form>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <Button className="w-full py-7 text-lg font-semibold">Login</Button>
+                        <Button className="w-full py-7 text-lg font-semibold">
+                            Login
+                        </Button>
                     </CardFooter>
                 </Card>
             </div>
