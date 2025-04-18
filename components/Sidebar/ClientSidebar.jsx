@@ -23,7 +23,7 @@ export default function ClientSidebar() {
                 <div className="space-y-5 w-full">
                     <div className="w-full flex justify-between items-center py-3">
                         <h1 className="font-bold text-lg hidden lg:block">QuickCopy AI</h1>
-                        <Button className="w-full p-0 rounded-full bg-transparent">
+                        <Button className="w-full lg:w-fit p-0 rounded-full bg-transparent">
                             <Menu size={30} />
                         </Button>
                     </div>
@@ -34,7 +34,9 @@ export default function ClientSidebar() {
                                 <Link href={item.href}>
                                     <Button
                                         variant={pathname === item.href ? "default" : "outline"}
-                                        className="justify-start text-sm w-[40px] h-[40px] lg:h-12 lg:w-full border-primary hover:bg-primary-200 rounded-full lg:rounded-lg"
+                                        className={`justify-start text-sm w-[40px] h-[40px] lg:h-12 lg:w-full border-white hover:bg-primary-200 rounded-full lg:rounded-lg ${
+                                            pathname === item.href && "bg-primary-500"
+                                        }`}
                                     >
                                         {item.icon}{" "}
                                         <span className="hidden lg:block">{item.label}</span>

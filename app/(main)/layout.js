@@ -1,6 +1,7 @@
 import "../globals.css";
 import { nunitoSans, workSans } from "@/fonts";
 import HomeNav from "@/components/Navbar/HomeNav";
+import HomeFooter from "@/components/HomeFooter";
 
 export const metadata = {
     title: "QuickCopy AI",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
             <body className={`${workSans.className} antialiased`}>
                 <HomeNav />
                 {children}
+                <HomeFooter />
             </body>
         </html>
     );

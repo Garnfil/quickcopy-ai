@@ -1,9 +1,6 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/wTME9btlBWv
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+"use client";
+
+import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -12,8 +9,11 @@ import {
     NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { nunitoSans } from "@/fonts";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Component() {
+    const pathname = usePathname();
     return (
         <header className="bg-primary-50 w-full px-4 md:px-6">
             <div className="max-w-screen-xl mx-auto flex shrink-0 items-center h-20">
@@ -24,42 +24,23 @@ export default function Component() {
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="left" className="bg-white">
-                        <Link href="#" prefetch={false}>
-                            <MountainIcon className="h-6 w-6" />
-                            <span className="sr-only">Acme Inc</span>
-                        </Link>
+                    <SheetContent side="left" className="bg-white p-5">
+                        <SheetTitle>
+                            <Link href="#" prefetch={false}>
+                                <Image src={"/logo.png"} width={150} height={150} alt="logo" />
+                            </Link>
+                        </SheetTitle>
+
                         <div className="grid gap-3 py-6">
                             <Link
-                                href="#"
+                                href="/"
                                 className="flex  w-full items-center py-2 text-lg font-semibold"
                                 prefetch={false}
                             >
                                 Home
                             </Link>
                             <Link
-                                href="#"
-                                className="flex w-full items-center py-2 text-lg font-semibold"
-                                prefetch={false}
-                            >
-                                About
-                            </Link>
-                            <Link
-                                href="#"
-                                className="flex w-full items-center py-2 text-lg font-semibold"
-                                prefetch={false}
-                            >
-                                Services
-                            </Link>
-                            <Link
-                                href="#"
-                                className="flex w-full items-center py-2 text-lg font-semibold"
-                                prefetch={false}
-                            >
-                                Portfolio
-                            </Link>
-                            <Link
-                                href="#"
+                                href="/contact"
                                 className="flex w-full items-center py-2 text-lg font-semibold"
                                 prefetch={false}
                             >
@@ -68,55 +49,29 @@ export default function Component() {
                         </div>
                     </SheetContent>
                 </Sheet>
-                <Link href="#" className="mr-6 hidden lg:flex" prefetch={false}>
+                <Link href="/" className=" hidden lg:flex" prefetch={false}>
                     {/* <MountainIcon className="h-6 w-6" /> */}
-                    <h2 className={`font-bold text-2xl ${nunitoSans.className}`}>QuickCopy</h2>
-                    <span className="sr-only">Acme Inc</span>
+                    <Image src="/logo.png" width={200} height={200} alt="logo" />
                 </Link>
                 <div className="flex w-full justify-center">
                     <NavigationMenu className="hidden lg:flex">
                         <NavigationMenuList>
                             <NavigationMenuLink asChild>
                                 <Link
-                                    data-active={true}
-                                    href="#"
-                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-transparent hover:text-primary hover:font-bold focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:text-primary data-[active]:font-bold data-[active]:bg-transparent"
+                                    data-active={pathname === "/"}
+                                    href="/"
+                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium hover:bg-transparent hover:text-primary hover:font-bold focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active=true]:text-primary data-[active=true]:font-bold data-[active=true]:bg-transparent data-[active=true]:focus:bg-transparent"
                                     prefetch={false}
                                 >
                                     Home
                                 </Link>
                             </NavigationMenuLink>
+
                             <NavigationMenuLink asChild>
                                 <Link
-                                    href="#"
-                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-transparent hover:text-primary hover:font-bold focus:bg-primary-200 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary-200/50 data-[state=open]:bg-primary-200/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                                    prefetch={false}
-                                >
-                                    About
-                                </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                                <Link
-                                    href="#"
-                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-transparent hover:text-primary hover:font-bold focus:bg-primary-200 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary-200/50 data-[state=open]:bg-primary-200/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                                    prefetch={false}
-                                >
-                                    Services
-                                </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                                <Link
-                                    href="#"
-                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-transparent hover:text-primary hover:font-bold focus:bg-primary-200 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary-200/50 data-[state=open]:bg-primary-200/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-                                    prefetch={false}
-                                >
-                                    Portfolio
-                                </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                                <Link
-                                    href="#"
-                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-transparent hover:text-primary hover:font-bold focus:bg-primary-200 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary-200/50 data-[state=open]:bg-primary-200/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                                    data-active={pathname === "/contact"}
+                                    href="/contact"
+                                    className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium hover:bg-transparent hover:text-primary hover:font-bold focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active=true]:text-primary data-[active=true]:font-bold data-[active=true]:bg-transparent data-[active=true]:focus:bg-transparent"
                                     prefetch={false}
                                 >
                                     Contact

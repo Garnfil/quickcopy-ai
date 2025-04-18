@@ -1,7 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, SearchCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { MousePointerClick, Sparkles, ClipboardCopy } from "lucide-react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default async function Home() {
     return (
@@ -21,13 +29,13 @@ export default async function Home() {
                     </h6>
                     <div className="flex flex-col md:flex-row justify-center gap-4 mt-2 ">
                         <Link
-                            href={""}
+                            href={"/sign-up"}
                             className="flex gap-2 justify-center bg-primary text-white h-12 rounded-full px-6 py-3"
                         >
                             Try it Free <ArrowRight />
                         </Link>
                         <Link
-                            href={""}
+                            href={"#how-it-works"}
                             className="flex gap-2 justify-center bg-transparent border border-primary text-primary h-12 rounded-full px-6 py-3"
                         >
                             See How It Works <SearchCheck />
@@ -37,8 +45,8 @@ export default async function Home() {
             </div>
 
             <div className="max-w-screen-xl mx-auto py-12">
-                <div className="flex gap-10 justify-center items-center">
-                    <div className="space-y-8 w-1/2">
+                <div className="flex gap-10 justify-center items-center lg:flex-row flex-col-reverse">
+                    <div className="space-y-8 lg:w-1/2 w-full">
                         <div className="space-y-3">
                             <h2 className="text-4xl/normal font-semibold">
                                 QuickCopy AI helps you write better UI text — without the burnout.
@@ -63,12 +71,99 @@ export default async function Home() {
                         </ul>
                     </div>
                     <Image
-                        className="w-1/2  object-cover rounded-lg"
+                        className="lg:w-1/2 w-full object-cover rounded-lg"
                         src="/app-mockup-2.png"
                         width={1000}
                         height={1000}
                         alt="mockup"
                     />
+                </div>
+            </div>
+
+            <div className="max-w-screen-xl mx-auto py-12" id="how-it-works">
+                <div className="text-center">
+                    <h2 className="text-3xl font-bold mb-2">How It Works</h2>
+                    <p className="text-black mb-6 text-lg">
+                        From idea to interface – generate smarter copy in seconds.
+                    </p>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                    <Card className="bg-white shadow-md rounded-xl">
+                        <CardContent className="p-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <MousePointerClick className="text-primary w-6 h-6" />
+                                <h3 className="text-xl font-semibold">1. Describe Your UI</h3>
+                            </div>
+                            <p className="text-gray-900 text-sm">
+                                Choose the UI element, pick a tone, and describe its purpose or
+                                situation. The more context, the better!
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="bg-white shadow-md rounded-xl">
+                        <CardContent className="p-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <Sparkles className="text-primary w-6 h-6" />
+                                <h3 className="text-xl font-semibold">2. Get Tailored Microcopy</h3>
+                            </div>
+                            <p className="text-gray-900 text-sm">
+                                Our AI generates five polished microcopy suggestions based on your
+                                input – clear, concise, and on brand.
+                            </p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="bg-white shadow-md rounded-xl">
+                        <CardContent className="p-6">
+                            <div className="flex items-center gap-3 mb-3">
+                                <ClipboardCopy className="text-primary w-6 h-6" />
+                                <h3 className="text-xl font-semibold">3. Copy and Use</h3>
+                            </div>
+                            <p className="text-gray-900 text-sm">
+                                Instantly copy your favorite result and paste it right into your
+                                app, design file, or component.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+
+            <div className="max-w-screen-sm mx-auto py-12">
+                <div className="text-center mb-6">
+                    <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
+                    <p className="text-muted-foreground text-lg">
+                        Everything you need to know before using the AI Microcopy Generator.
+                    </p>
+                </div>
+                <div className="shadow-md p-3 rounded">
+                    <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>How many generations can I use?</AccordionTrigger>
+                            <AccordionContent>
+                                You can generate up to{" "}
+                                <strong>10 microcopy suggestions per day</strong> on the free plan.
+                                Enough for quick UI polish!
+                            </AccordionContent>
+                        </AccordionItem>
+
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it really free?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes — our base plan is <strong>completely free</strong> with no
+                                credit card required. Premium plans may be added later as we grow.
+                            </AccordionContent>
+                        </AccordionItem>
+
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>What kind of copy can it generate?</AccordionTrigger>
+                            <AccordionContent>
+                                It can generate short, helpful text for UI elements like buttons,
+                                tooltips, modals, labels, onboarding messages, and more — all
+                                tailored to your tone and context.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
             </div>
         </div>
