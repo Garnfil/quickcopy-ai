@@ -53,7 +53,7 @@ export default async function Home() {
                             </h2>
                             <h6 className="">
                                 QuickCopy AI does it in seconds — just describe your feature, and
-                                we'll generate polished, on-brand suggestions.
+                                we&apos;ll generate polished, on-brand suggestions.
                             </h6>
                         </div>
 

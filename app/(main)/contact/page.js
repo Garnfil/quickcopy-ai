@@ -3,8 +3,8 @@ export default function ContactPage() {
         <main className="max-w-3xl mx-auto px-4 py-12">
             <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
             <p className="text-gray-600 mb-8">
-                Got a question, feedback, or partnership idea? We'd love to hear from you. Fill out
-                the form or reach us directly via email.
+                Got a question, feedback, or partnership idea? We&apos;d love to hear from you. Fill
+                out the form or reach us directly via email.
             </p>
 
             <form className="space-y-6">
