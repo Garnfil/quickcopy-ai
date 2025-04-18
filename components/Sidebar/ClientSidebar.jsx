@@ -1,15 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { List, LogOut, Menu, Settings, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { usePathname } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export default function ClientSidebar() {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
+    const [userEmail, setUserEmail] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const supabase = createClient();
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+            setUserEmail(user?.email ?? null);
+        };
+
+        fetchUser();
+    }, []);
 
     const navItems = [
         { href: "/account/dashboard", label: "Generate", icon: <Text /> },
@@ -19,7 +33,7 @@ export default function ClientSidebar() {
 
     return (
         <aside className="w-[100px] bg-dashboard-aside rounded-xl lg:w-1/5 2xl:w-1/6 h-full p-5">
-            <div className="h-full w-full flex justify-between items-start flex-col ">
+            <div className="h-full w-full flex justify-between items-start flex-col">
                 <div className="space-y-5 w-full">
                     <div className="w-full flex justify-between items-center py-3">
                         <h1 className="font-bold text-lg hidden lg:block">QuickCopy AI</h1>
@@ -38,7 +52,7 @@ export default function ClientSidebar() {
                                             pathname === item.href && "bg-primary-500"
                                         }`}
                                     >
-                                        {item.icon}{" "}
+                                        {item.icon}
                                         <span className="hidden lg:block">{item.label}</span>
                                     </Button>
                                 </Link>
@@ -49,16 +63,16 @@ export default function ClientSidebar() {
 
                 <div className="py-3 w-full flex justify-between items-center flex-col lg:flex-row gap-5">
                     <div className="w-2/3">
-                        <h6 className="text-xs hidden lg:block">jamesgarnfil15@gmail.com</h6>
+                        <h6 className="text-xs hidden lg:block">{userEmail}</h6>
                         <h5 className="text-sm text-primary-200 font-semibold hidden lg:flex gap-1">
-                            <span>15</span> <span className="hidden lg:block">credits</span>{" "}
+                            <span>15</span> <span className="hidden lg:block">credits</span>
                         </h5>
                     </div>
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <form action="/auth/signout" method="post">
-                                    <Button type="submit">
+                                    <Button type="submit" className="bg-primary-500">
                                         <LogOut />
                                     </Button>
                                 </form>
