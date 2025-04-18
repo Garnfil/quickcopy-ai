@@ -3,7 +3,7 @@ import { ArrowRight, SearchCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
     return (
         <div className="w-full bg-white px-4 md:px-10">
             <div className="max-w-screen-xl mx-auto py-32">

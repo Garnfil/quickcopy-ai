@@ -4,12 +4,7 @@ import { useState } from "react";
 import { List, LogOut, Menu, Settings, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { usePathname } from "next/navigation";
 
 export default function ClientSidebar() {
@@ -27,9 +22,7 @@ export default function ClientSidebar() {
             <div className="h-full w-full flex justify-between items-start flex-col ">
                 <div className="space-y-5 w-full">
                     <div className="w-full flex justify-between items-center py-3">
-                        <h1 className="font-bold text-lg hidden lg:block">
-                            QuickCopy AI
-                        </h1>
+                        <h1 className="font-bold text-lg hidden lg:block">QuickCopy AI</h1>
                         <Button className="w-full p-0 rounded-full bg-transparent">
                             <Menu size={30} />
                         </Button>
@@ -37,18 +30,14 @@ export default function ClientSidebar() {
 
                     <ul className="w-full flex flex-col gap-4 items-center justify-center">
                         {navItems.map((item) => (
-                            <li key={item.href}>
+                            <li key={item.href} className="w-full">
                                 <Link href={item.href}>
                                     <Button
-                                        variant={
-                                            pathname === item.href ? "default" : "outline"
-                                        }
-                                        className="justify-start text-sm w-[40px] h-[40px] lg:h-12 lg:w-full border-primary hover:bg-primary-200 rounded-full"
+                                        variant={pathname === item.href ? "default" : "outline"}
+                                        className="justify-start text-sm w-[40px] h-[40px] lg:h-12 lg:w-full border-primary hover:bg-primary-200 rounded-full lg:rounded-lg"
                                     >
                                         {item.icon}{" "}
-                                        <span className="hidden lg:block">
-                                            {item.label}
-                                        </span>
+                                        <span className="hidden lg:block">{item.label}</span>
                                     </Button>
                                 </Link>
                             </li>
@@ -56,21 +45,21 @@ export default function ClientSidebar() {
                     </ul>
                 </div>
 
-                <div className="py-3 w-full flex justify-between items-center sm:flex-col gap-5">
+                <div className="py-3 w-full flex justify-between items-center flex-col lg:flex-row gap-5">
                     <div className="w-2/3">
-                        <h6 className="text-xs hidden lg:block">
-                            jamesgarnfil15@gmail.com
-                        </h6>
-                        <h5 className="text-sm text-primary-200 font-semibold hidden lg:block">
-                            15 <span className="hidden lg:block">credits</span>{" "}
+                        <h6 className="text-xs hidden lg:block">jamesgarnfil15@gmail.com</h6>
+                        <h5 className="text-sm text-primary-200 font-semibold hidden lg:flex gap-1">
+                            <span>15</span> <span className="hidden lg:block">credits</span>{" "}
                         </h5>
                     </div>
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <Button>
-                                    <LogOut />
-                                </Button>
+                                <form action="/auth/signout" method="post">
+                                    <Button type="submit">
+                                        <LogOut />
+                                    </Button>
+                                </form>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>Logout</p>

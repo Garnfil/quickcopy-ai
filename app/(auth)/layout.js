@@ -10,9 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body
-                className={`${workSans.className}  antialiased bg-auth overflow-y-hidden`}
-            >
+            <body className={`${workSans.className}  antialiased bg-auth overflow-y-hidden`}>
                 <AuthNav />
                 {children}
             </body>

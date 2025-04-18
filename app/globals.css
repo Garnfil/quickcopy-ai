@@ -112,16 +112,16 @@
 }
 
 .bg-dashboard {
-    background-color: #17142f;
+    background-color: #faf9ff;
 }
 
 .bg-dashboard-aside {
-    background-color: #221d45;
+    background-color: #372e79;
 }
 
 .bg-dashboard-card {
-    background-color: #221d45;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .dark {

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,11 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import toast from "react-hot-toast";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signup } from "@/lib/actions/auth/actions";
+import toast from "react-hot-toast";
+import { login } from "@/lib/actions/auth/actions";
 
-export default function SignUpForm() {
+export default function SignInForm() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +31,7 @@ export default function SignUpForm() {
                 password: formData.get("password"),
             };
 
-            const response = await signup(data);
+            const response = await login(data);
 
             if (!response.success) {
                 console.error(response.error);
@@ -39,6 +39,7 @@ export default function SignUpForm() {
 
             router.push("/account/dashboard");
         } catch (error) {
+            console.log("SignIn:", error);
             toast.error(error.message);
         } finally {
             setIsLoading(false);
@@ -48,28 +49,38 @@ export default function SignUpForm() {
     return (
         <Card className="w-[450px] px-10 py-12" style={{ boxShadow: "0 24px 64px #26214a1a" }}>
             <CardHeader className="text-center">
-                <CardTitle className="text-3xl font-bold">Create your account</CardTitle>
-                <CardDescription>It only takes a minute to begin</CardDescription>
+                <CardTitle className="text-3xl font-bold">Welcome Back</CardTitle>
+                <CardDescription>Write Better UI Copy in Seconds</CardDescription>
             </CardHeader>
             <CardContent>
                 <form onSubmit={handleSubmit}>
                     <div className="grid w-full items-center gap-6">
                         <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="email">Email</Label>
-                            <Input id="email" name="email" type="email" required />
+                            <Label htmlFor="name">Email</Label>
+                            <Input id="name" placeholder="Your Email Address" name="email" />
                         </div>
-                        <div className="flex flex-col space-y-1.5">
-                            <Label htmlFor="password">Password</Label>
-                            <Input id="password" name="password" type="password" required />
+                        <div className="text-end">
+                            <div className="flex flex-col space-y-1.5 mb-1">
+                                <Label htmlFor="name">Password</Label>
+                                <Input
+                                    id="name"
+                                    placeholder="Your Password"
+                                    name="password"
+                                    type="password"
+                                />
+                            </div>
+                            <Link href={"#"} className="text-primary w-full text-end text-xs">
+                                Forgot Password
+                            </Link>
                         </div>
                     </div>
-                    <CardFooter className="flex justify-between mt-6">
+                    <CardFooter className="flex justify-between mt-5">
                         <Button
-                            disabled={isLoading}
                             type="submit"
+                            disabled={isLoading}
                             className="w-full py-7 text-lg font-semibold"
                         >
-                            Register
+                            Login
                         </Button>
                     </CardFooter>
                 </form>
