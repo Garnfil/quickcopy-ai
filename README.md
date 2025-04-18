@@ -25,7 +25,7 @@ Imagine you're building a task management app and need a tooltip for your "Delet
 **With QuickCopy AI, just:**
 
 1. Log in
-2. Choose a microcopy type: 👉 _Tooltip_
+2. Choose a microcopy element type: 👉 _Tooltip_
 3. Add context:
    `"A delete button in a task manager app. Tone: Friendly but clear."`
 4. Click **Generate**
@@ -41,7 +41,7 @@ Imagine you're building a task management app and need a tooltip for your "Delet
 ## 🛠 Tech Stack
 
 -   **Frontend:** [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/)
--   **Backend/Auth/DB:** [Appwrite](https://appwrite.io/)
+-   **Backend/Auth/DB:** [Supabase](https://supabase.com/)
 -   **AI Integration:** [OpenAI API](https://openai.com/api)
 
 ---
