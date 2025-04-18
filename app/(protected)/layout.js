@@ -10,6 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="/sm-logo.ico" sizes="any" />
+            </head>
             <body className={`bg-dashboard text-white ${workSans.className} antialiased`}>
                 <div className="min-h-screen p-8 h-screen">
                     <div className="flex md:flex-row gap-10 h-full w-full">

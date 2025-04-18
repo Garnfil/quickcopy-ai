@@ -11,6 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="/sm-logo.ico" sizes="any" />
+            </head>
             <body className={`${workSans.className} antialiased`}>
                 <HomeNav />
                 {children}
