@@ -34,18 +34,20 @@ export default function SignInForm() {
             const response = await login(data);
 
             if (!response.success) {
-                const errorMessage =
+                // Use the safe error message from the server action
+                toast.error(
                     response.error?.message ||
-                    "Login failed. Please try again.";
-                toast.error(errorMessage);
+                        "Login failed. Please try again."
+                );
                 return;
             }
 
             toast.success("Login successful!");
             router.push("/account/dashboard");
         } catch (error) {
+            // This will catch any unexpected client-side errors
             toast.error(
-                error.message || "An unexpected error occurred"
+                "An unexpected error occurred. Please try again."
             );
         } finally {
             setIsLoading(false);
