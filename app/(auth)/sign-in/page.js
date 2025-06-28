@@ -1,6 +1,6 @@
 import SignInForm from "@/components/Forms/SignInForm";
 import React from "react";
-import { Toaster } from "react-hot-toast";
+import {Toaster} from "react-hot-toast";
 
 export default function SignIn() {
     return (
@@ -11,6 +11,7 @@ export default function SignIn() {
                     success: {
                         style: {
                             background: "green",
+                            color: "white",
                         },
                     },
                     error: {
